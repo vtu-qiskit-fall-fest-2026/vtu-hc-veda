@@ -307,6 +307,6 @@ Released under the [MIT License](LICENSE). See `LICENSE` for details.
 **Veda** · Team ID `VTU-QFF-HC-0001` · Tier `Online`
 · Built with ⚛️ Qiskit for the VTU-QFF Hackathon
 
-[⬆ Back to Top](#Veda)
+[⬆ Back to Top](#veda)
 
 </div>
