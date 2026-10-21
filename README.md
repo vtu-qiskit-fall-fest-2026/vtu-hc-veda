@@ -46,9 +46,9 @@
 
 | # | Name | GitHub Username | Role |
 | :-- | :--- | :--- | :--- |
-| 1 | _Add your name_ | _your-github-username_ | _Team Lead_ |
-| 2 | _Add your name_ | _your-github-username_ | _Developer_ |
-| 3 | _Add your name_ | _your-github-username_ | _Developer_ |
+| 1 | Darshan Naik | darshannaik0915 | Team Lead |
+| 2 | Amol | amolkalate86 | Developer |
+| 3 | Payal | payalnaik07-lang | Developer |
 
 <!--
 Optional: add a plain list instead of the table above.
@@ -66,11 +66,11 @@ who experiences it, and why does it matter. Link to the official problem
 statement from the brief if one applies.
 -->
 
-**Problem:** _Describe the problem in 2–3 sentences._
+**Problem:** Quantum computing is difficult for beginners to learn because concepts such as qubits, superposition, quantum gates, and measurement are often taught theoretically without enough hands-on experimentation. Students need an accessible way to build quantum circuits, simulate their behaviour, and understand how quantum states change after each gate.
 
-**Why it matters:** _Explain the impact or opportunity._
+**Why it matters:** Interactive learning can make quantum computing more understandable and engaging for students. Visualizing circuit outputs and step-by-step state evolution helps learners connect quantum theory with practical experiments.
 
-**Track / Category:** _Online / Offline · Track 1 / Track 2 · <domain>_
+**Track / Category:** Online · Track 4: Quantum + AI & ML
 
 ---
 
@@ -81,11 +81,11 @@ Describe your solution. Keep it concrete: the core idea, the user flow, and
 the quantum/ML technique you are applying.
 -->
 
-**Solution:** _In 2–3 sentences, describe what you built._
+**Solution:** Green Quanta is an interactive quantum learning web application that lets beginners build circuits, simulate quantum gates using Qiskit Aer, visualize measurement outcomes, and explore quantum state changes step by step. It also includes lessons, quizzes, progress tracking, and an AI Tutor for explaining quantum concepts.
 
-**Key idea:** _The one-line technical summary of your approach._
+**Key idea:** Combine Qiskit-based circuit simulation with gate-by-gate quantum state visualization and AI-assisted explanations in one learning platform.
 
-**Why this works:** _How your approach addresses the problem statement._
+**Why this works:** Learners can experiment with quantum gates and observe how circuit operations affect simulated states and measurement probabilities, helping them connect theoretical concepts with practical results.
 
 ---
 
@@ -96,64 +96,78 @@ Walk through how it works. A simple pipeline diagram in text or Mermaid is ideal
 -->
 
 ```mermaid
-flowchart LR
-    A[Input Data] --> B[Preprocessing]
-    B --> C[Quantum Circuit / Model]
-    C --> D[Post-processing]
-    D --> E[Output]
+flowchart TD
+    A[Student] --> B[JavaScript Frontend]
+    B --> C[FastAPI Backend]
+    C --> D[Qiskit Aer Simulator]
+    D --> E[Measurement Results and State Evolution]
+    E --> C
+    C --> B
+    B --> F[Visualizations and AI Tutor Explanation]
 ```
 
-1. **Input** — _what data goes in and in what format_
-2. **Preprocessing** — _cleaning, feature extraction, encoding_
-3. **Quantum core** — _the circuit, ansatz, or algorithm used_
-4. **Post-processing** — _decoding, measurement, scoring_
-5. **Output** — _what the user finally gets_
-
+1. **Input:** The learner selects qubits and adds H, X, or CNOT gates.
+2. **Frontend:** JavaScript displays the circuit builder and simulation results.
+3. **Quantum core:** FastAPI sends circuit requests to the Qiskit Aer simulator.
+4. **Post-processing:** Simulation results include measurement counts and state information.
+5. **Output:** Learners explore circuit results, state evolution, and tutor explanations.
 ---
 
 ## 🛠️ Tech Stack
 
 | Layer | Technology |
 | :--- | :--- |
-| Language | Python 3.11+ |
-| Quantum SDK | Qiskit `>=1.0`, Qiskit Aer, Qiskit Runtime |
-| Optimisation | Qiskit Optimization / COBYLA / SPSA |
-| Simulation | AerSimulator (statevector / noisemodel) |
-| Environment | JupyterLab / VS Code, `venv` |
-| Version control | Git + GitHub |
-
+| Frontend | HTML, CSS, JavaScript |
+| Backend | Python, FastAPI, Uvicorn |
+| Quantum SDK | Qiskit |
+| Simulation | Qiskit Aer |
+| Database | Supabase / PostgreSQL |
+| API Communication | REST API, JSON |
+| Deployment | Render |
+| Version Control | Git, GitHub |
 ---
 
 ## 📁 Project Structure
 
 ```text
-vtu-hc-veda/
-├── README.md              # This file
-├── requirements.txt       # Python dependencies
-├── pyproject.toml         # Project metadata (optional)
+GOAT/
+├── README.md
+├── requirements.txt
 ├── .gitignore
-├── notebooks/             # Jupyter notebooks for experiments
-│   └── exploration.ipynb
-├── src/
+├── .env.example
+├── supabase_schema.sql
+├── backend/
 │   ├── __init__.py
-│   ├── circuit.py         # Quantum circuit construction
-│   ├── optimizer.py       # Optimization loop
-│   └── main.py            # Entry point
-├── data/                  # Datasets (use Git LFS for large files)
-├── tests/                 # Unit tests
-│   └── test_circuit.py
-└── docs/                  # Notes, diagrams, reports
+│   ├── main.py
+│   ├── db.py
+│   ├── models.py
+│   └── quantum/
+│       ├── __init__.py
+│       ├── simulator.py
+│       ├── time_machine.py
+│       └── tutor.py
+└── frontend/
+    ├── index.html
+    ├── css/
+    │   └── style.css
+    └── js/
+        ├── circuitBuilder.js
+        ├── simulator.js
+        ├── timeMachine.js
+        ├── tutor.js
+        └── main.js
 ```
 
 ---
 
 ## 🚀 How to Run
 
+
 ### Prerequisites
 
 - Python 3.11 or newer
-- [Git](https://git-scm.com/downloads)
-- A GitHub account (you need collaborator access to this repo)
+- Git
+- A web browser
 
 ### 1. Clone the repository
 
@@ -165,34 +179,45 @@ cd vtu-hc-veda
 ### 2. Create a virtual environment
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate        # Linux / macOS
-# .venv\Scripts\activate         # Windows (PowerShell)
+python -m venv .venv
+```
+
+Windows:
+```bash
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+```bash
+source .venv/bin/activate
 ```
 
 ### 3. Install dependencies
 
 ```bash
-pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 4. Run
+### 4. Configure environment variables
+
+If the application requires environment variables, create a `.env` file using `.env.example` as a guide. Never commit secrets or API keys.
+
+### 5. Run the backend
 
 ```bash
-python -m src.main
+uvicorn backend.main:app --reload --port 8000
 ```
 
-Or launch the notebook workflow:
+### 6. Open the application
 
-```bash
-jupyter lab
-```
+Open the frontend using the serving method configured in the project. If the backend serves the frontend, visit:
 
-### 5. Run the tests
+`http://127.0.0.1:8000`
 
-```bash
-pytest -q
+API health check:
+
+`http://127.0.0.1:8000/api/health`
+
 ```
 
 ---
