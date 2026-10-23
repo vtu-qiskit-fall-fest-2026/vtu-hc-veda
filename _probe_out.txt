@@ -1,0 +1,18 @@
+CSS braces open=314 close=314 balanced=True
+Missing referenced assets in index.html: NONE
+Scripts found: 13
+    js/data.js exists= True
+    js/state.js exists= True
+    js/auth.js exists= True
+    js/router.js exists= True
+    js/simulator.js exists= True
+    js/timeMachine.js exists= True
+    js/circuitBuilder.js exists= True
+    js/lessons.js exists= True
+    js/dashboard.js exists= True
+    js/algorithms.js exists= True
+    js/quizzes.js exists= True
+    js/tutor.js exists= True
+    js/main.js exists= True
+div open=35 close=35 balanced=True
+index bytes: 10711
