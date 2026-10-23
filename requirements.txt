@@ -1,0 +1,15 @@
+# Quantum Learning Platform — backend dependencies
+# Python 3.12
+qiskit>=1.0
+qiskit-aer>=0.13
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.0
+
+# Supabase / PostgreSQL persistence
+supabase>=2.0
+python-dotenv>=1.0
+psycopg2-binary>=2.9
+
+# OpenAI AI tutor
+openai>=1.0
