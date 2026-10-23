@@ -335,3 +335,8 @@ Released under the [MIT License](LICENSE). See `LICENSE` for details.
 [⬆ Back to Top](#veda)
 
 </div>
+Project Links
+
+- Live Website: https://green-quanta-ai-sigj.onrender.com
+- Demo Video: https://youtu.be/0YJ-GzHXsSI
+- GitHub Repository: https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-veda
