@@ -1,92 +1,247 @@
-# Green Quanta - AI Quantum Learning Platform
-# Green Quanta – AI Quantum Learning Platform
+<div align="center">
 
-🚀 **Live Demo:** https://green-quanta-ai-sigj.onrender.com
+# Veda
 
-An interactive web app for learning quantum algorithms by building and simulating
-quantum circuits with **Qiskit Aer**, visualizing the measurement outcome
-distribution, stepping through the state evolution **after every gate** (the
-"Quantum Time Machine"), and reading a built-in **AI Tutor** explanation.
+**VTU-QFF-HC-0001** | **Tier: Online**
 
-## Features
+# Green Quanta — AI Quantum Learning Platform
 
-- **Build a circuit** from three basic gates: **H** (Hadamard), **X** (Pauli-X),
-  and **CNOT** (controlled-X), on 1–4 qubits.
-- **Simulate** with the Qiskit `AerSimulator` and see the measurement histogram
-  plus the final statevector.
-- **Quantum Time Machine** — replay the circuit one gate at a time and watch the
-  amplitude / probability bars change after every gate.
-- **AI Tutor** — a local, rule-based explanation of what each gate does, what the
-  final state means, and what to try next.
+An interactive platform that helps students learn quantum computing through circuit building, simulation, visualizations, quizzes, and AI-assisted explanations.
 
-## Prerequisites
+[Live Website](https://green-quanta-ai-sigj.onrender.com) · [Demo Video](https://youtu.be/OYJ-GzHXSsI) · [GitHub Repository](https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-veda)
 
-- **Python 3.12** (verified: `python --version` → `3.12.10`)
-- `pip` (`pip --version` → `25.0.1`)
-- Qiskit, Qiskit Aer, FastAPI, Uvicorn (installed via `requirements.txt`)
-- No Node/npm required — the frontend is static HTML/CSS/JS.
+</div>
 
-## Project Structure
+---
 
+## 📌 Hackathon Details
+
+| Field | Details |
+|---|---|
+| Team Name | Veda |
+| Team ID | VTU-QFF-HC-0001 |
+| Event | VTU-Qiskit Fall Fest 2026 |
+| Tier | Online |
+| Track | Track 4 — Quantum + AI & ML |
+| Project | Green Quanta — AI Quantum Learning Platform |
+
+---
+
+## 👥 Team Members
+
+| # | Name | GitHub Username | Role |
+|---|---|---|---|
+| 1 | Darshan Naik | [darshannaik0915](https://github.com/darshannaik0915) | Team Lead |
+| 2 | Amol | [amolkalate86](https://github.com/amolkalate86) | Developer |
+| 3 | Payal | [payalvn07-lang](https://github.com/payalvn07-lang) | Developer |
+
+---
+
+## ❓ Problem Statement
+
+Quantum computing is difficult for beginners to learn because concepts such as qubits, superposition, quantum gates, and measurement are often taught theoretically without enough hands-on experimentation. Students need an accessible way to build quantum circuits, simulate their behaviour, and understand how quantum states change after each gate.
+
+### Why It Matters
+
+Interactive learning can make quantum computing more understandable and engaging. Visualizing circuit outputs and step-by-step state evolution helps learners connect quantum theory with practical experiments.
+
+**Track / Category:** Online — Track 4: Quantum + AI & ML
+
+---
+
+## 💡 Proposed Solution
+
+Green Quanta is an AI-assisted quantum learning platform designed to make quantum computing easier to explore through interactive learning tools. Learners can explore concepts, build quantum circuits, examine simulation results, practise with quizzes, track learning progress, and use an AI tutor for explanations.
+
+### Key Features
+
+- **Dashboard:** A central place to access learning tools.
+- **Quantum Learning:** Explore quantum computing concepts.
+- **Circuit Builder:** Create circuits using quantum gates.
+- **Quantum Simulator:** Explore circuit measurement results and state behaviour.
+- **Algorithms:** Learn about quantum algorithm concepts.
+- **AI Tutor:** Get explanations and learning assistance.
+- **Quizzes:** Practise concepts and test understanding.
+- **Progress Tracking:** Review learning activity.
+- **Profile and Settings:** Manage available account preferences.
+
+*Features depend on the current implementation of the deployed application.*
+
+---
+
+## 🧩 Approach & Architecture
+
+The platform connects the learner-facing interface with backend services and quantum simulation components.
+
+```mermaid
+flowchart TD
+    A[Student] --> B[JavaScript Frontend]
+    B --> C[FastAPI Backend]
+    C --> D[Qiskit Aer Simulator]
+    D --> E[Measurement Results and State Evolution]
+    E --> C
+    C --> B
+    B --> F[Visualizations and AI Tutor]
 ```
-GOAT/
+
+### Workflow
+
+1. **Input:** The learner selects qubits and adds gates such as H, X, or CNOT.
+2. **Frontend:** The interface displays the circuit and available controls.
+3. **Quantum Core:** The backend processes circuit requests using the configured quantum simulator.
+4. **Simulation:** The simulator produces results for the requested circuit.
+5. **Output:** Learners examine available measurement results, visualizations, and explanations.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Programming Languages | Python, JavaScript |
+| Quantum SDK | Qiskit |
+| Quantum Simulation | Qiskit Aer |
+| Backend Framework | FastAPI |
+| Frontend | HTML, CSS, JavaScript |
+| Database | Configured database, if enabled |
+| Development Tools | VS Code, Git, GitHub |
+| Deployment | Render |
+
+*Refer to the source code and dependency files for the exact technologies and versions used.*
+
+---
+
+## 📁 Project Structure
+
+```text
+vtu-hc-veda/
 ├── README.md
 ├── requirements.txt
-├── backend/
-│   ├── __init__.py
-│   ├── main.py                    # FastAPI app: frontend + API routes
-│   ├── models.py                  # Pydantic request/response schemas
-│   └── quantum/
-│       ├── __init__.py
-│       ├── simulator.py           # build circuit + run Aer simulator
-│       ├── time_machine.py        # statevector after each gate
-│       └── tutor.py               # AI Tutor explanation engine
-└── frontend/
-    ├── index.html                 # UI: palette, circuit, results, time machine, tutor
-    ├── css/style.css
-    └── js/
-        ├── circuitBuilder.js      # add/remove gates, render circuit
-        ├── simulator.js           # /api/simulate → counts histogram
-        ├── timeMachine.js         # /api/time-machine → step-through view
-        ├── tutor.js               # /api/tutor → explanation
-        └── main.js                # wiring + backend health badge
+├── main.py
+├── db.py
+├── models.py
+├── supabase_schema.sql
+├── index.html
+├── frontend/
+├── js/
+├── quantum/
+├── .env.example
+├── .gitignore
+├── IMPLEMENTATION_PLAN.md
+├── LICENSE
+└── veda.pptx
 ```
 
-## Run
+This is a high-level overview. The actual repository may contain additional files and directories.
+
+---
+
+## 🚀 How to Run
+
+### Prerequisites
+
+- Python 3.11 or a compatible version
+- Git
+- A GitHub account with repository access
+
+### 1. Clone the Repository
 
 ```bash
-cd GOAT
-python -m pip install -r requirements.txt
-uvicorn backend.main:app --reload --port 8000
+git clone https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-veda.git
+cd vtu-hc-veda
 ```
 
-Then open **http://127.0.0.1:8000** in a browser.
+### 2. Create a Virtual Environment
 
-## API
-
-| Method | Path              | Body / purpose                                              |
-|--------|-------------------|-------------------------------------------------------------|
-| POST   | `/api/simulate`   | `{qubits, shots, gates}` → counts + final statevector       |
-| POST   | `/api/time-machine` | `{qubits, gates}` → ordered per-gate states                |
-| POST   | `/api/tutor`      | `{qubits, gates}` → structured explanation                  |
-| GET    | `/api/health`     | `{status, qiskit, aer}`                                     |
-
-Example `/api/simulate` body (Bell state):
-
-```json
-{
-  "qubits": 2,
-  "shots": 1024,
-  "gates": [
-    {"type": "h",  "qubits": [0]},
-    {"type": "cx", "qubits": [0, 1]}
-  ]
-}
+```bash
+python -m venv .venv
 ```
 
-## Notes
+**Windows:**
 
-- Qubit count is capped at **4** so the statevector stays readable.
-- Measurement counts are sampled (default 1024 shots); amplitude probabilities are
-  computed exactly from the final statevector.
-- Statevectors use Qiskit's little-endian basis ordering (`|0…0⟩` … `|1…1⟩`).
+```bash
+.venv\Scripts\activate
+```
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure Environment Variables
+
+If required, configure local environment variables using `.env.example` as a reference. Do not commit API keys, passwords, or other secrets.
+
+### 5. Start the Application
+
+For a FastAPI application whose entry point is `main.py` and whose application object is named `app`, use:
+
+```bash
+uvicorn main:app --reload
+```
+
+If the project defines a different start command, use the command specified in its application configuration.
+
+---
+
+## 🌐 Project Links
+
+- **Live Website:** https://green-quanta-ai-sigj.onrender.com
+- **Demo Video:** https://youtu.be/OYJ-GzHXSsI
+- **Hackathon Repository:** https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-veda
+- **Original Project Repository:** https://github.com/darshannaik0915/green-quanta-ai
+
+---
+
+## ✅ Submission Checklist
+
+- [ ] README updated with project details.
+- [ ] Team name, Team ID, and members listed.
+- [ ] Source code committed to the repository.
+- [ ] Dependencies and setup instructions checked.
+- [ ] Live website tested.
+- [ ] Demo video link tested.
+- [ ] Presentation uploaded as `veda.pptx`.
+- [ ] Required collaborator invitations accepted.
+- [ ] Official submission form or portal completed, if required.
+
+---
+
+## 📚 Resources
+
+- [Qiskit Documentation](https://docs.quantum.ibm.com/)
+- [Qiskit Aer Simulator](https://docs.quantum.ibm.com/guides/simulate)
+- [IBM Quantum Platform](https://quantum.ibm.com/)
+- [Qiskit Learning Resources](https://qiskit.qotlabs.org/learning)
+- [GitHub Documentation](https://docs.github.com/)
+
+---
+
+## 📄 License
+
+Refer to the repository's `LICENSE` file for the applicable license terms.
+
+---
+
+<div align="center">
+
+**Veda** · `VTU-QFF-HC-0001`
+
+VTU-Qiskit Fall Fest 2026  
+**Track 4 — Quantum + AI & ML**
+Project Links
+
+- Live Website: https://green-quanta-ai-sigj.onrender.com
+- Demo Video: https://youtu.be/0YJ-GzHXsSI?si=MUuf7v1MvzwFRSmD
+- GitHub Repository: https://github.com/vtu-qiskit-fall-fest-2026/vtu-hc-veda
+
+[Visit the Live Website](https://green-quanta-ai-sigj.onrender.com)
+
+</div>
